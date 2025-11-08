@@ -42,7 +42,6 @@
       align-items:center;
     }
 
-    /* PHẦN ẢNH */
     .photo{
       padding:20px;
       display:flex;
@@ -148,6 +147,8 @@
       cursor:pointer;
       font-weight:700;
       font-size:16px;
+      text-decoration:none;
+      display:inline-block;
     }
 
     .sky{
@@ -163,10 +164,6 @@
       height:18px;
       border-radius:2px;
     }
-
-    /* ----------------------------- */
-    /*       GIAO DIỆN MOBILE        */
-    /* ----------------------------- */
 
     @media (max-width:880px){
       .card{
@@ -207,7 +204,6 @@
       }
     }
 
-    /* RẤT NHỎ: MÀN 375px trở xuống */
     @media (max-width:420px){
       h1{font-size:20px}
       p.lead{font-size:15px}
@@ -258,6 +254,7 @@
 
   <script>
     const sky = document.getElementById('sky');
+
     function makeConfetti(){
       const colors=['#ff7a2d','#ffd166','#06d6a0','#118ab2','#ef476f'];
       for(let i=0;i<60;i++){
@@ -272,19 +269,28 @@
         el.style.opacity=0.95;
         el.style.transition='transform 3s linear, top 3s linear, left 3s linear, opacity 1.5s linear';
         sky.appendChild(el);
+
         requestAnimationFrame(()=>{
           el.style.top=(70+Math.random()*30)+'%';
           el.style.left=(Math.random()*120-10)+'%';
           el.style.transform='rotate('+(Math.random()*720)+'deg) translateY(80px)';
         });
+
         setTimeout(()=>{el.style.opacity=0;},2600);
         setTimeout(()=>{el.remove();},4000);
       }
     }
-    document.getElementById('celebrateBtn').addEventListener('click',makeConfetti);
+
+    // NÚT BẤM: RƠI CONFETTI RỒI CHUYỂN LINK
+    document.getElementById('celebrateBtn').addEventListener('click', () => {
+      makeConfetti();
+      setTimeout(() => {
+        window.location.href = "https://20-11tkn11a16.github.io/L-i-Ch-c-th-y/";
+      }, 800);
+    });
+
     window.addEventListener('load',()=>setTimeout(makeConfetti,800));
   </script>
 
 </body>
 </html>
-
